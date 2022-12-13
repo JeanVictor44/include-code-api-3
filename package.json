@@ -7,7 +7,7 @@
     "node": "18.x"
   },
   "scripts": {
-    "dev": "ts-node-dev src/server.ts",
+    "dev": "ts-node-dev server.ts",
     "build":"tsc",
     "start": "node dist/server.js",
     "migration:generate": "typeorm-ts-node-commonjs -d ./src/data-source.ts migration:generate ./src/migrations/default",
