@@ -15,7 +15,7 @@ data_source_1.AppDataSource.initialize().then(() => {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
     app.use((req, res, next) => {
-        res.header("Access-Control-Allow-Origin", "https://include-code-front.vercel.app");
+        res.header("Access-Control-Allow-Origin", "*");
         app.use((0, cors_1.default)());
         next();
     });
