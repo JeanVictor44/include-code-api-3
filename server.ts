@@ -6,12 +6,15 @@ import routes from './api';
 import cors from 'cors'
 import UserController from './controllers/UserController';
 import LoginController from './controllers/LoginController';
-import { allowCors, handler} from './helpers/allowCors';
 
 AppDataSource.initialize().then(() => {
     const app = express();
     app.use(express.json())
-    allowCors(handler)
+    app.use((req,res, next) => {
+        res.header("Access-Control-Allow-Origin","https://include-code-front-end.vercel.app/")
+        app.use(cors())
+        next()
+    })
     app.post('/user', UserController.create)
     app.post('/login', LoginController.login)
 
