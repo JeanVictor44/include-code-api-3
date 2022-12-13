@@ -6,12 +6,12 @@ import routes from './api';
 import cors from 'cors'
 import UserController from './controllers/UserController';
 import LoginController from './controllers/LoginController';
-
+import { allowCors, handler} from './helpers/allowCors';
 
 AppDataSource.initialize().then(() => {
     const app = express();
     app.use(express.json())
-    cors()
+    allowCors(handler)
     app.post('/user', UserController.create)
     app.post('/login', LoginController.login)
 

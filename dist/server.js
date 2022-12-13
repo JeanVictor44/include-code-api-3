@@ -8,13 +8,13 @@ require("reflect-metadata");
 const express_1 = __importDefault(require("express"));
 const data_source_1 = require("./data-source");
 const api_1 = __importDefault(require("./api"));
-const cors_1 = __importDefault(require("cors"));
 const UserController_1 = __importDefault(require("./controllers/UserController"));
 const LoginController_1 = __importDefault(require("./controllers/LoginController"));
+const allowCors_1 = require("./helpers/allowCors");
 data_source_1.AppDataSource.initialize().then(() => {
     const app = (0, express_1.default)();
     app.use(express_1.default.json());
-    (0, cors_1.default)();
+    (0, allowCors_1.allowCors)(allowCors_1.handler);
     app.post('/user', UserController_1.default.create);
     app.post('/login', LoginController_1.default.login);
     app.get('/hello', (req, res) => {
