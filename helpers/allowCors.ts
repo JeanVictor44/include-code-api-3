@@ -4,7 +4,7 @@ type Tfn = (req: Request, res: Response) => void
 
 export const allowCors = (fn:Tfn) => async (req: Request, res: Response) => {
     res.setHeader('Access-Control-Allow-Credentials', 'true')
-    res.setHeader('Access-Control-Allow-Origin', '*')
+    res.setHeader('Access-Control-Allow-Origin', 'https://include-code-front-end.vercel.app/')
     // another common pattern
     // res.setHeader('Access-Control-Allow-Origin', req.headers.origin);
     res.setHeader('Access-Control-Allow-Methods', 'GET,OPTIONS,PATCH,DELETE,POST,PUT')
